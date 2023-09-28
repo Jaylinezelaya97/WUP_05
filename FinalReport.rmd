@@ -17,9 +17,25 @@ triUmp <-read.csv(file="triUmpsal.csv",header=TRUE)
 
 A new  preventative aides drug (triUmpsal) is under test in clinical trials. Consider only the DrugUsers, does this drug seem effective?  Hint - use dplyr to obtain that subpopulation with the filter command.
 
+
+
+```{r}
+library(dplyr)
+druggies = filter(triUmp, triUmp$DrugUser=='yes')
+```
+
+$H_0$ The drug will not be effective in preventing Aids in drug users.
+
+$H_A$ The drug wil be effective in preventing Aids in drug users.
+
 # Methods
 
+Infected is the response variable based on treatment of aids drug and is numerical. Treatment is the explanatory variable and is categorical. Therefore, we use cat~cat.
+
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
+
+
+
 
 # Results
 
@@ -30,6 +46,13 @@ A new  preventative aides drug (triUmpsal) is under test in clinical trials. Con
 ### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
+
+```{r}
+barchartGC(~infected + treatment,data=druggies)
+barchartGC(~infected + treatment,data=druggies, type="percent")
+```
+
+This bar graph shows the people who took a real vaccine were much better off than those who took a placebo.
 
 ### Numerical Descriptive Results
 
